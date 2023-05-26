@@ -31,10 +31,8 @@ public class ElasticManualService {
                         LogData.class,
                         IndexCoordinates.of(index));
 
-        List<LogData> listMatches = new ArrayList<LogData>();
-        productHits.forEach(searchHit -> {
-            listMatches.add(searchHit.getContent());
-        });
+        List<LogData> listMatches = new ArrayList<>();
+        productHits.forEach(searchHit -> listMatches.add(searchHit.getContent()));
         return listMatches;
     }
 
@@ -43,10 +41,8 @@ public class ElasticManualService {
         Query searchQuery = new NativeSearchQueryBuilder().withQuery(queryBuilder).build();
         SearchHits<LogData> searchHits = elasticsearchOperations.search(searchQuery, LogData.class,
                 IndexCoordinates.of(index));
-        List<LogData> searchMatches = new ArrayList<LogData>();
-        searchHits.forEach(searchHit -> {
-            searchMatches.add(searchHit.getContent());
-        });
+        List<LogData> searchMatches = new ArrayList<>();
+        searchHits.forEach(searchHit -> searchMatches.add(searchHit.getContent()));
         return searchMatches;
     }
 

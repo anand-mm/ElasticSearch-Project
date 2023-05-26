@@ -1,5 +1,6 @@
 package com.demo.elastic.Elasticsearch;
 
+import org.joda.time.Instant;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
@@ -21,6 +22,6 @@ public class LogData {
     private String hostname;
 
     @Field(type = FieldType.Text, name = "timestamp")
-    private String time;
+    private String time = Instant.now().toString();
 
 }
